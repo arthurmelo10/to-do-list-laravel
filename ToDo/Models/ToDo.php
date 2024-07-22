@@ -1,7 +1,9 @@
 <?php
 
+namespace ToDo\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use User\Models\User;
 
 class ToDo extends Model
 {
