@@ -11,8 +11,28 @@ class Controller extends BaseController
     {
     }
 
-    public function getFirstToDo(): string
+//    public function getFirstToDo(): string
+//    {
+//        return $this->repository->first();
+//    }
+
+    public function find(): string
     {
-        return $this->repository->first();
+        return $this->repository->find();
+    }
+
+    public function create(): string
+    {
+        return $this->repository->create();
+    }
+
+    public function update(): string
+    {
+        return $this->repository->update();
+    }
+
+    public function delete(): string
+    {
+        return $this->repository->delete();
     }
 }
