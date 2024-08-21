@@ -10,10 +10,11 @@
 <body>
     <h1>Bem Vindo</h1>
 
-    <h2>Esta é primeira interação do projeto</h2>
+    <h2>Este é um projeto Laravel voltado para uma listagem de tarefas</h2>
 
-    <button>
-        Login
-    </button>
+    <h3>
+        Por favor, faça <a href="/login">login</a> para acessar suas notas, ou <a href="/register">registre-se</a>,
+        e comece a fazer suas anotações
+    </h3>
 </body>
 </html>
