@@ -10,7 +10,10 @@
         <input type="text" placeholder="Name">
         <input type="email" placeholder="Email">
         <input type="password" placeholder="Password">
-        <input type="button" placeholder="Login">
     </form>
+    <button type="submit"> Login </button>
+    <button>
+        <a href="{{ url('/') }}" class="btn btn-primary">Voltar</a>
+    </button>
 </body>
 </html>

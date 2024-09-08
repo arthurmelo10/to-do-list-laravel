@@ -6,11 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-<form action="" method="post">
-    <input type="text" placeholder="Name">
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <input type="button" placeholder="Register">
-</form>
+    <form action="" method="post">
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+    </form>
+    <button type="submit">Register</button>
+    <button>
+        <a href="{{ url('/') }}" class="btn btn-primary">Voltar</a>
+    </button>
 </body>
 </html>
