@@ -2,30 +2,58 @@
 
 namespace ToDo\Repository;
 
+use ToDo\Models\ToDo;
+
 class Repository
 {
-//    public function first(): string
-//    {
-//        return "teste no repository";
-//    }
-
-    public function find(): string
+    public function getAllTodo()
     {
-        return "Encontrei as atividades deste usuáriuo";
+        $model = $this->getModel();
+
+        return $model->all();
     }
 
-    public function create(): string
+    public function findTodoById(string $id): ToDo
     {
-        return "Atividade criada";
+        $model = $this->getModel();
+
+        return $model->first($id);
     }
 
-    public function update(): string
+    public function createTodo(array $input): ToDo
     {
-        return "Atividade Atualizada";
+        $model = $this->getModel();
+        $model->fill(...$input);
+        $model->save();
+
+        return $model;
     }
 
-    public function delete(): string
+    public function updateTodo(string $id, array $input): ?ToDo
     {
-        return "Atividade Deletada";
+       if (!$task = $this->findTodoById($id)) {
+           return null;
+       }
+
+       $task->fill($input, $task);
+
+        $task->save();
+
+        return $task;
+
+    }
+
+    public function deleteTodo(string $id): bool
+    {
+        if ($deleteTask = $this->findTodoById($id)) {
+            return false;
+        }
+
+        return $deleteTask->delete();
+    }
+
+    private function getModel(): ToDo
+    {
+        return new ToDo();
     }
 }
