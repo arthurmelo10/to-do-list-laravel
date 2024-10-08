@@ -17,7 +17,7 @@ class Repository
     {
         $model = $this->getModel();
 
-        return $model->first($id);
+        return $model->find($id);
     }
 
     public function createTodo(array $input): ToDo
