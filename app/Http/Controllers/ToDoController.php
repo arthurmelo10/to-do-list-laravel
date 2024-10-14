@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use ToDo\Service\Service;
 use User\Models\User;
 
@@ -14,9 +15,9 @@ class ToDoController extends Controller
 
     public function index(string $id)
     {
-        $todos = User::with('toDo')->find($id);
+        $todos = $this->service->getTasksByUser($id);
 
-        //return
+        return Inertia::render('ToDoList', ['todos' => $todos]);
     }
 
     public function findById(Request $request)

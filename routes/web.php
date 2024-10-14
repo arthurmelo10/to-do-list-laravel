@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\ToDoController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ToDoController as ToDoController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 

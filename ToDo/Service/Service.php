@@ -10,9 +10,9 @@ class Service
     {
     }
 
-    public function getTasks()
+    public function getTasksByUser(string $userId)
     {
-        return $this->repository->getAllTodo();
+        return $this->repository->getAllTodoByUser($userId);
     }
 
     public function findTaskById(string $id)

@@ -6,11 +6,13 @@ use ToDo\Models\ToDo;
 
 class Repository
 {
-    public function getAllTodo()
+    public function getAllTodoByUser(string $userId)
     {
         $model = $this->getModel();
 
-        return $model->all();
+        $todos = $model->where('user_id', $userId)->get();
+
+        return $todos;
     }
 
     public function findTodoById(string $id): ToDo
