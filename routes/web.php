@@ -27,7 +27,8 @@ Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'findById'])->na
 /**
  * Alterar método HTTP para POST
  */
-Route::post('/store', [TodoController::class, 'store'])->name('store');
+Route::get('/user/{id}/createTodo', [TodoController::class, 'create'])->name('create');
+Route::post('/user/{id}/createTodo', [TodoController::class, 'store'])->name('store');
 /**
  * Alterar método HTTP para PUT
  */

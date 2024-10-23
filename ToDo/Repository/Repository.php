@@ -25,7 +25,7 @@ class Repository
     public function createTodo(array $input): ToDo
     {
         $model = $this->getModel();
-        $model->fill(...$input);
+        $model->fill($input);
         $model->save();
 
         return $model;

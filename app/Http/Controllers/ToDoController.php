@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use ToDo\Service\Service;
 use User\Models\User;
@@ -17,24 +18,48 @@ class ToDoController extends Controller
     {
         $todos = $this->service->getTasksByUser($id);
 
-        return Inertia::render('ToDoList', ['todos' => $todos]);
+        return Inertia::render('ToDo/List', [
+            'todos' => $todos,
+            'userId' => $id,
+        ]);
     }
 
     public function findById(Request $request)
     {
         $id = $request->route('toDoId');
-        return json_encode($this->service->findTaskById($id));
+        $todo = $this->service->findTaskById($id);
+
+        return Inertia::render('ToDo/ToDo', ['todo' => $todo]);
 
     }
-    public function store(Request $request)
+
+    public function create(string $id)
     {
+        return Inertia::render('ToDo/CreateToDo', [
+            'userId' => $id,
+        ]);
+    }
+    public function store(Request $request, $userId)
+    {
+        $request->validate(
+            [
+                'title' => 'required|string',
+                'description' => 'required|string',
+                'completed' => 'required|boolean',
+            ]
+        );
+
         $data = [
             'title' => $request->get('title'),
             'description' => $request->get('description'),
-            'completed' => $request->get('completed')
+            'completed' => $request->get('completed'),
+            'user_id' => $userId,
         ];
 
-        return $this->service->createTask($data);
+
+        $this->service->createTask($data);
+
+        return redirect()->back()->with('success', 'Tarefa criada com sucesso!');
     }
 
     public function edit(string $id)
