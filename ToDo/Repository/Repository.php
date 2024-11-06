@@ -6,6 +6,9 @@ use ToDo\Models\ToDo;
 
 class Repository
 {
+    /**
+     * @return ToDo[]
+     */
     public function getAllTodoByUser(string $userId)
     {
         $model = $this->getModel();

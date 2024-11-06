@@ -23,7 +23,7 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
  * CRUD
  */
 Route::get('/user/{id}/todos', [ToDoController::class, 'index'])->name('index');
-Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'findById'])->name('show');
+Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'show'])->name('show');
 /**
  * Alterar método HTTP para POST
  */
@@ -36,4 +36,4 @@ Route::get('/user/{id}/todos/{toDoId}/edit', [TodoController::class, 'edit'])->n
 Route::put('/user/{id}/todos/{toDoId}', [TodoController::class, 'update'])->name('update');
 /**
  * Alterar método HTTP para DELETE */
-Route::delete('user/{id}/todos/{toDoId}', [TodoController::class, 'destroy'])->name('destroy');
+Route::delete('user/{id}/todos/{toDoId}/delete', [TodoController::class, 'destroy'])->name('destroy');

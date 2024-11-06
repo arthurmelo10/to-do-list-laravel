@@ -24,13 +24,16 @@ class ToDoController extends Controller
         ]);
     }
 
-    public function findById(Request $request)
+    public function show(Request $request)
     {
         $id = $request->route('toDoId');
         $todo = $this->service->findTaskById($id);
 
-        return Inertia::render('ToDo/ToDo', ['todo' => $todo]);
-
+        return Inertia::render('ToDo/ToDo', [
+            'todo' => $todo,
+            'userId' => $request->route('id'),
+            'toDoId' => $id,
+        ]);
     }
 
     public function create(string $id)
@@ -62,12 +65,18 @@ class ToDoController extends Controller
         return redirect()->back()->with('success', 'Tarefa criada com sucesso!');
     }
 
-    public function edit(string $id)
+    public function edit(Request $request)
     {
-        return $this->service->findTaskById($id);
+        $id = $request->route('toDoId');
+        $this->service->findTaskById($id);
+
+        return Inertia::render('ToDo/EditToDo', [
+            'userId' => $request->route('id'),
+            'toDoId' => $request->route('toDoId')
+        ]);
     }
 
-    public function update(Request $request, string$id)
+    public function update(Request $request)
     {
         $request->validate([
             'title' => 'required',
@@ -75,13 +84,15 @@ class ToDoController extends Controller
             'completed' => 'required',
         ]);
 
+        $toDoId = $request->route('toDoId');
+
         $data = [
             'title' => $request->get('title'),
             'description' => $request->get('description'),
             'completed' => $request->get('completed')
         ];
 
-        $this->service->updateTask($id, $data);
+        $this->service->updateTask($toDoId, $data);
     }
 
     public function destroy(string $id)
