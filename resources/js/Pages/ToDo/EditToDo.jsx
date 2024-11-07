@@ -15,7 +15,6 @@ const EditToDo = ({ userId, toDoId }) => {
             title,
             description,
             completed,
-            //user_id: userId
         });
     };
 

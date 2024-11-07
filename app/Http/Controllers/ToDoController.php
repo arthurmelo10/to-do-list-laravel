@@ -59,7 +59,6 @@ class ToDoController extends Controller
             'user_id' => $userId,
         ];
 
-
         $this->service->createTask($data);
 
         return redirect()->back()->with('success', 'Tarefa criada com sucesso!');
@@ -95,8 +94,8 @@ class ToDoController extends Controller
         $this->service->updateTask($toDoId, $data);
     }
 
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        return $this->service->deleteTask($id);
+        return $this->service->deleteTask($request->route('toDoId'));
     }
 }

@@ -50,7 +50,7 @@ class Repository
 
     public function deleteTodo(string $id): bool
     {
-        if ($deleteTask = $this->findTodoById($id)) {
+        if (!$deleteTask = $this->findTodoById($id)) {
             return false;
         }
 

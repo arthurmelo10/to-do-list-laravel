@@ -34,7 +34,6 @@ const ToDo = ({ todo, userId, toDoId }) => {
                             Voltar
                         </Link>
                     </div>
-
                     <div>
                         <Button>
                             <Link href={`/user/${userId}/todos/${toDoId}/edit`}>
@@ -44,17 +43,12 @@ const ToDo = ({ todo, userId, toDoId }) => {
                     </div>
                     <div>
                         <Button>
-                            <Link href={`/user/${userId}/todos/${toDoId}/delete`}>
+                            <Link href={`/user/${userId}/todos/${toDoId}/delete`} method={'delete'}>
                                 Excluir
                             </Link>
                         </Button>
                     </div>
                 </div>
-                {/*<div style={{marginTop: '20px'}}>*/}
-                {/*    <Link href={`/user/${userId}/todos`} className="btn">*/}
-                {/*        Voltar*/}
-                {/*    </Link>*/}
-                {/*</div>*/}
             </div>
         </div>
     );
