@@ -61,7 +61,7 @@ class ToDoController extends Controller
 
         $this->service->createTask($data);
 
-        return redirect()->back()->with('success', 'Tarefa criada com sucesso!');
+        return to_route('index', $userId);
     }
 
     public function edit(Request $request)
