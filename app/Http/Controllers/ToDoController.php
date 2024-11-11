@@ -92,10 +92,14 @@ class ToDoController extends Controller
         ];
 
         $this->service->updateTask($toDoId, $data);
+
+        return to_route('index', $request->route('id'));
     }
 
     public function destroy(Request $request)
     {
-        return $this->service->deleteTask($request->route('toDoId'));
+        $this->service->deleteTask($request->route('toDoId'));
+
+        return to_route('index', $request->route('id'));
     }
 }
