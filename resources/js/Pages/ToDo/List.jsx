@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from '@inertiajs/inertia-react';
 import ToDo from "@/Pages/ToDo/ToDo.jsx";
+import NavLink from "@/Components/NavLink.jsx";
 
 const List = ({ todos, userId}) => {
     const listStyle = {
@@ -34,9 +35,11 @@ const List = ({ todos, userId}) => {
                 </ul>
             </div>
             <div style={{marginTop: '20px'}}>
-                <Link href={`/user/${userId}/createTodo`}>
-                    Criar uma tarefa
-                </Link>
+                <NavLink>
+                    <Link href={`/user/${userId}/createTodo`}>
+                        Criar uma tarefa
+                    </Link>
+                </NavLink>
             </div>
         </div>
     );

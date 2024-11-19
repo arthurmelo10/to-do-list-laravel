@@ -1,6 +1,8 @@
 import React from "react";
 import {Button} from "@headlessui/react";
 import { Link } from '@inertiajs/inertia-react';
+import DangerButton from "@/Components/DangerButton.jsx";
+import NavLink from "@/Components/NavLink.jsx";
 
 const ToDo = ({ todo, userId, toDoId }) => {
     const listStyle = {
@@ -24,15 +26,19 @@ const ToDo = ({ todo, userId, toDoId }) => {
                     <p>Completo: {todo.completed ? 'Completed' : 'Pending'}</p>
 
                     <div>
-                        <Link href={`/user/${userId}/todos/${toDoId}`}>
-                            Detalhes
-                        </Link>
+                        <NavLink>
+                            <Link href={`/user/${userId}/todos/${toDoId}`}>
+                                Detalhes
+                            </Link>
+                        </NavLink>
                     </div>
 
                     <div>
-                        <Link href={`/user/${userId}/todos`}>
-                            Voltar
-                        </Link>
+                        <NavLink>
+                            <Link href={`/user/${userId}/todos`}>
+                                Voltar
+                            </Link>
+                        </NavLink>
                     </div>
                     <div>
                         <Button>
@@ -42,11 +48,11 @@ const ToDo = ({ todo, userId, toDoId }) => {
                         </Button>
                     </div>
                     <div>
-                        <Button>
+                        <DangerButton>
                             <Link href={`/user/${userId}/todos/${toDoId}/delete`} method={'delete'}>
                                 Excluir
                             </Link>
-                        </Button>
+                        </DangerButton>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from '@inertiajs/inertia-react';
+import PrimaryButton from '@/Components/PrimaryButton';
+import SecondaryButton from "@/Components/SecondaryButton.jsx";
 
 const CreateToDo = ({ userId }) => {
 
@@ -54,14 +56,18 @@ const CreateToDo = ({ userId }) => {
                 </div>
 
                 <div>
-                    <button type="submit">Criar</button>
+                    <PrimaryButton>
+                        Criar
+                    </PrimaryButton>
                 </div>
             </form>
 
             <div style={{marginTop: '20px'}}>
-                <Link href={`/user/${userId}/todos`} className="btn">
-                    Voltar
-                </Link>
+                <SecondaryButton>
+                    <Link href={`/user/${userId}/todos`} className="btn">
+                        Voltar
+                    </Link>
+                </SecondaryButton>
             </div>
         </div>
     )
