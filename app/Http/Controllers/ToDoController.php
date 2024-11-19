@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
 use ToDo\Service\Service;
-use User\Models\User;
 
 class ToDoController extends Controller
 {
@@ -14,7 +14,7 @@ class ToDoController extends Controller
     {
     }
 
-    public function index(string $id)
+    public function index(string $id): InertiaResponse
     {
         $todos = $this->service->getTasksByUser($id);
 
@@ -24,7 +24,7 @@ class ToDoController extends Controller
         ]);
     }
 
-    public function show(Request $request)
+    public function show(Request $request): InertiaResponse
     {
         $id = $request->route('toDoId');
         $todo = $this->service->findTaskById($id);
@@ -36,13 +36,13 @@ class ToDoController extends Controller
         ]);
     }
 
-    public function create(string $id)
+    public function create(string $id): InertiaResponse
     {
         return Inertia::render('ToDo/CreateToDo', [
             'userId' => $id,
         ]);
     }
-    public function store(Request $request, $userId)
+    public function store(Request $request, $userId): RedirectResponse
     {
         $request->validate(
             [
@@ -64,7 +64,7 @@ class ToDoController extends Controller
         return to_route('index', $userId);
     }
 
-    public function edit(Request $request)
+    public function edit(Request $request): InertiaResponse
     {
         $id = $request->route('toDoId');
         $this->service->findTaskById($id);
@@ -75,7 +75,7 @@ class ToDoController extends Controller
         ]);
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
         $request->validate([
             'title' => 'required',
@@ -96,7 +96,7 @@ class ToDoController extends Controller
         return to_route('index', $request->route('id'));
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request): RedirectResponse
     {
         $this->service->deleteTask($request->route('toDoId'));
 

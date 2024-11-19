@@ -24,16 +24,8 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
  */
 Route::get('/user/{id}/todos', [ToDoController::class, 'index'])->name('index');
 Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'show'])->name('show');
-/**
- * Alterar método HTTP para POST
- */
 Route::get('/user/{id}/createTodo', [TodoController::class, 'create'])->name('create');
 Route::post('/user/{id}/createTodo', [TodoController::class, 'store'])->name('store');
-/**
- * Alterar método HTTP para PUT
- */
 Route::get('/user/{id}/todos/{toDoId}/edit', [TodoController::class, 'edit'])->name('edit');
 Route::put('/user/{id}/todos/{toDoId}', [TodoController::class, 'update'])->name('update');
-/**
- * Alterar método HTTP para DELETE */
 Route::delete('user/{id}/todos/{toDoId}/delete', [TodoController::class, 'destroy'])->name('destroy');
