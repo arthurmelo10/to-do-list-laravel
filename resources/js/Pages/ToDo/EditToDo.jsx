@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Inertia } from "@inertiajs/inertia";
 import { Link } from '@inertiajs/inertia-react';
+import SecondaryButton from "@/Components/SecondaryButton.jsx";
+import PrimaryButton from "@/Components/PrimaryButton.jsx";
 
 const EditToDo = ({ userId, toDoId }) => {
 
@@ -19,7 +21,7 @@ const EditToDo = ({ userId, toDoId }) => {
     };
 
     return (
-        <div>
+        <div style={{margin: '30px'}}>
             <h1><b>Editar a tarefa</b></h1>
             <form onSubmit={handleSubmit}>
                 <div style={{marginBottom: '20px'}}>
@@ -53,14 +55,16 @@ const EditToDo = ({ userId, toDoId }) => {
                 </div>
 
                 <div>
-                    <button type="submit">Salvar</button>
+                    <PrimaryButton>Salvar</PrimaryButton>
                 </div>
             </form>
 
             <div style={{marginTop: '20px'}}>
-                <Link href={`/user/${userId}/todos`} className="btn">
-                    Voltar
-                </Link>
+                <SecondaryButton>
+                    <Link href={`/user/${userId}/todos`} className="btn">
+                        Voltar
+                    </Link>
+                </SecondaryButton>
             </div>
         </div>
     )

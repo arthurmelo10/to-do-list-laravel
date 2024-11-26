@@ -9,13 +9,13 @@ class Repository
     /**
      * @return ToDo[]
      */
-    public function getAllTodoByUser(string $userId)
+    public function getAllTodoByUser(string $userId): array
     {
         $model = $this->getModel();
 
         $todos = $model->where('user_id', $userId)->get();
 
-        return $todos;
+        return $todos->toArray();
     }
 
     public function findTodoById(string $id): ToDo

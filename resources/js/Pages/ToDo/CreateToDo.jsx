@@ -22,7 +22,7 @@ const CreateToDo = ({ userId }) => {
     };
 
     return (
-        <div>
+        <div  style={{margin: '20px'}}>
             <h1><b>Crie uma nova tarefa</b></h1>
             <form onSubmit={handleSubmit}>
                 <div style={{marginBottom: '20px'}}>

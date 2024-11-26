@@ -1,20 +1,25 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
+import PrimaryButton from "@/Components/PrimaryButton.jsx";
 
 const Home = () => {
     return (
         <div>
             <h1> Bem Vindo a sua lista de afazeres</h1>
-            <p>Por favor, faça seu login ou registre-se nos links abaixo</p>
+            <p>Por favor, faça seu login ou registre-se nos botões abaixo</p>
             <div>
-                <Link href={"/login"}>
-                    <button>Login</button>
-                </Link>
+                <PrimaryButton>
+                    <Link href={route('login')}>
+                        Login
+                    </Link>
+                </PrimaryButton>
             </div>
             <div>
-                <Link href={"/register"}>
-                    <button>Registre-se</button>
-                </Link>
+                <PrimaryButton>
+                    <Link href={route('register')}>
+                        Registre-se
+                    </Link>
+                </PrimaryButton>
             </div>
         </div>
     )
