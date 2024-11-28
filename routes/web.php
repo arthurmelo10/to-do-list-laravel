@@ -18,7 +18,6 @@ Route::get('/', function () {
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('postLogin');
-    Route::post('/logout', [LoginController::class, 'destroy'])->name('destroyLogin');
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store'])->name('postRegister');
 });
@@ -26,10 +25,13 @@ Route::middleware('guest')->group(function () {
 /**
  * CRUD
  */
-Route::get('/user/{id}/todos', [ToDoController::class, 'index'])->name('index');
-Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'show'])->name('show');
-Route::get('/user/{id}/createTodo', [TodoController::class, 'create'])->name('create');
-Route::post('/user/{id}/createTodo', [TodoController::class, 'store'])->name('store');
-Route::get('/user/{id}/todos/{toDoId}/edit', [TodoController::class, 'edit'])->name('edit');
-Route::put('/user/{id}/todos/{toDoId}', [TodoController::class, 'update'])->name('update');
-Route::delete('user/{id}/todos/{toDoId}/delete', [TodoController::class, 'destroy'])->name('destroy');
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'destroy'])->name('destroyLogin');
+    Route::get('/user/{id}/todos', [ToDoController::class, 'index'])->name('index');
+    Route::get('/user/{id}/todos/{toDoId}', [ToDoController::class, 'show'])->name('show');
+    Route::get('/user/{id}/createTodo', [TodoController::class, 'create'])->name('create');
+    Route::post('/user/{id}/createTodo', [TodoController::class, 'store'])->name('store');
+    Route::get('/user/{id}/todos/{toDoId}/edit', [TodoController::class, 'edit'])->name('edit');
+    Route::put('/user/{id}/todos/{toDoId}', [TodoController::class, 'update'])->name('update');
+    Route::delete('user/{id}/todos/{toDoId}/delete', [TodoController::class, 'destroy'])->name('destroy');
+});

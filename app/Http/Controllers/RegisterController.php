@@ -32,6 +32,6 @@ class RegisterController extends Controller
 
         auth()->login($user);
 
-        return redirect("/user/{$user->id}/todos")->with('success', 'Your account has been created.');
+        return redirect("/user/{$user->id}/todos");
     }
 }

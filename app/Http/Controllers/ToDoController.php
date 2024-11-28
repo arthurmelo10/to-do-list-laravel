@@ -17,10 +17,11 @@ class ToDoController extends Controller
     public function index(string $id): InertiaResponse
     {
         $todos = $this->service->getTasksByUser($id);
+        $user = request()->user();
 
         return Inertia::render('ToDo/List', [
             'todos' => $todos,
-            'userId' => $id,
+            'user' => $user,
         ]);
     }
 

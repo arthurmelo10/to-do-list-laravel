@@ -28,12 +28,21 @@ class LoginController extends BaseController
 
         session()->regenerate();
 
-        return redirect('/')->with('Sucesso', 'Bem Vindo de Volto!');
+        return redirect('/user/'. auth()->id() .'/todos')->with('Sucesso', 'Bem Vindo de Volta!');
+
+        //return $this->redirectTo();
     }
 
     public function destroy()
     {
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         auth()->logout();
         return redirect('/')->with('Sucesso', 'Até Mais!');
+    }
+
+    private function redirectTo()
+    {
+        return '/user/' . auth()->id() . '/todos';
     }
 }
