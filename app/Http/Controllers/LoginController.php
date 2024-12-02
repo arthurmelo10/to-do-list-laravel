@@ -29,8 +29,6 @@ class LoginController extends BaseController
         session()->regenerate();
 
         return redirect('/user/'. auth()->id() .'/todos')->with('Sucesso', 'Bem Vindo de Volta!');
-
-        //return $this->redirectTo();
     }
 
     public function destroy()
@@ -39,10 +37,5 @@ class LoginController extends BaseController
         request()->session()->regenerateToken();
         auth()->logout();
         return redirect('/')->with('Sucesso', 'Até Mais!');
-    }
-
-    private function redirectTo()
-    {
-        return '/user/' . auth()->id() . '/todos';
     }
 }

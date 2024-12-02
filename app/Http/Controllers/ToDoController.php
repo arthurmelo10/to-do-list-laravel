@@ -43,6 +43,7 @@ class ToDoController extends Controller
             'userId' => $id,
         ]);
     }
+
     public function store(Request $request, $userId): RedirectResponse
     {
         $request->validate(
