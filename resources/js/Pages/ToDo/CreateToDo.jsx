@@ -51,7 +51,7 @@ const CreateToDo = ({ userId }) => {
                     <input
                         type="checkbox"
                         checked={completed}
-                        onChange={() => setStatus()}
+                        onChange={() => setCompleted(!completed)}
                     />
                 </div>
 

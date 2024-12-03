@@ -14,9 +14,6 @@ const ToDo = ({ todo, userId, toDoId }) => {
         margin: '20px',
     };
 
-    console.log(userId)
-    console.log(toDoId)
-
     return (
         <div>
             <div>

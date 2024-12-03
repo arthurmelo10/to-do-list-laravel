@@ -4,10 +4,10 @@ import { Link } from '@inertiajs/inertia-react';
 import SecondaryButton from "@/Components/SecondaryButton.jsx";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
 
-const EditToDo = ({ userId, toDoId }) => {
+const EditToDo = ({ userId, toDoId, taskTitle, taskDescription }) => {
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [title, setTitle] = useState(taskTitle);
+    const [description, setDescription] = useState(taskDescription);
     const [completed, setCompleted] = useState(false);
 
     const handleSubmit = (e) => {
@@ -50,7 +50,7 @@ const EditToDo = ({ userId, toDoId }) => {
                     <input
                         type="checkbox"
                         checked={completed}
-                        onChange={() => setStatus()}
+                        onChange={() => setCompleted(!completed)}
                     />
                 </div>
 

@@ -69,11 +69,13 @@ class ToDoController extends Controller
     public function edit(Request $request): InertiaResponse
     {
         $id = $request->route('toDoId');
-        $this->service->findTaskById($id);
+        $task = $this->service->findTaskById($id);
 
         return Inertia::render('ToDo/EditToDo', [
             'userId' => $request->route('id'),
-            'toDoId' => $request->route('toDoId')
+            'toDoId' => $request->route('toDoId'),
+            'taskTitle' => $task->title,
+            'taskDescription' => $task->description
         ]);
     }
 
