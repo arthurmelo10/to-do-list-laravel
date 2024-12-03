@@ -1,28 +1,32 @@
 import React from "react";
-import { Link } from "@inertiajs/react";
+import {Head, Link} from "@inertiajs/react";
 import PrimaryButton from "@/Components/PrimaryButton.jsx";
+import GuestLayout from "@/Layouts/GuestLayout.jsx";
 
 const Home = () => {
 
     return (
-        <div>
-            <h1> Bem Vindo a sua lista de afazeres</h1>
-            <p>Por favor, faça seu login ou registre-se nos botões abaixo</p>
+        <GuestLayout>
+            <Head title="Home" />
             <div>
-                <PrimaryButton>
-                    <Link href={route('login')}>
-                        Login
-                    </Link>
-                </PrimaryButton>
+                <h1> Bem Vindo para a sua lista de afazeres virtual</h1>
+                <p>Por favor, faça seu login ou registre-se nos botões abaixo:</p>
+                <div className="mt-6">
+                    <PrimaryButton>
+                        <Link href={route('login')}>
+                            Login
+                        </Link>
+                    </PrimaryButton>
+                </div>
+                <div className="mt-6">
+                    <PrimaryButton>
+                        <Link href={route('register')}>
+                            Registre-se
+                        </Link>
+                    </PrimaryButton>
+                </div>
             </div>
-            <div>
-                <PrimaryButton>
-                    <Link href={route('register')}>
-                        Registre-se
-                    </Link>
-                </PrimaryButton>
-            </div>
-        </div>
+        </GuestLayout>
     )
 }
 
