@@ -50,7 +50,7 @@ const EditToDo = ({ userId, toDoId }) => {
                     <input
                         type="checkbox"
                         checked={completed}
-                        onChange={() => setStatus()}
+                        onChange={() => setCompleted(!completed)}
                     />
                 </div>
 
