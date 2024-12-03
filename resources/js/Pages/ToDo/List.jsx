@@ -20,7 +20,7 @@ const List = ({ todos, user}) => {
         borderRadius: '8px',
         backgroundColor: '#f9f9f9',
     };
-console.log(user)
+
     return (
         <div>
             <h1>Bem Vindo, {user.name}</h1>
